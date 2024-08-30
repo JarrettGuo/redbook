@@ -92,6 +92,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file('/Users/jarrett/Desktop/RedBook/android/redbook.keystore')
+            storePassword '111111'
+            keyAlias 'redbook'
+            keyPassword '111111'
+        }
     }
     buildTypes {
         debug {
@@ -100,9 +106,11 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            // 添加下面这行以禁用crunch
+            crunchPngs false
         }
     }
 }
